@@ -23,6 +23,9 @@ metadata:
   namespace: {{ include "common.namespace" . }}
 spec:
   replicas: {{ .Values.global.aaf.hello.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}
   template:
     metadata:
       labels:

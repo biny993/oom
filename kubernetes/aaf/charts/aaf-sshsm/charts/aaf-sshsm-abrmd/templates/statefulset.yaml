@@ -28,6 +28,9 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}
   serviceName:
   template:
     metadata:

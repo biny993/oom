@@ -24,6 +24,9 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.global.aaf.cass.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}
   template:
     metadata:
       labels:
