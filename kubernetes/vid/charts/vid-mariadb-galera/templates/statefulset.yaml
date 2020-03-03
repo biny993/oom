@@ -26,6 +26,9 @@ spec:
 #  serviceName: {{ include "common.fullname" . }}
   serviceName: {{ .Values.service.name }}
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "common.fullname" . }}
   template:
     metadata:
       labels:
