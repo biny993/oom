@@ -39,6 +39,9 @@ spec:
         topologyKey: kubernetes.io/hostname
   serviceName: {{ include "common.servicename" . }}
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}
   podManagementPolicy: {{ .Values.podManagementPolicy }}
   updateStrategy:
     type: {{ .Values.updateStrategy.type }}

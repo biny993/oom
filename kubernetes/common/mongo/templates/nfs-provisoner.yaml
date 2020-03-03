@@ -27,6 +27,9 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   #replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.nfsprovisionerPrefix }}-nfs-provisioner
   strategy:
     type: Recreate
   template:
