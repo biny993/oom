@@ -25,6 +25,9 @@ metadata:
 spec:
   serviceName: "{{ .Values.service.name }}-cluster"
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}
   podManagementPolicy: Parallel
   template:
     metadata:
