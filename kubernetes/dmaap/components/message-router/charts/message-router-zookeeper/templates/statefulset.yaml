@@ -26,6 +26,9 @@ metadata:
 spec:
   serviceName: {{ .Values.service.name }}
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:

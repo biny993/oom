@@ -23,6 +23,9 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}
   serviceName: {{ .Values.config.dmaapDrNode.name }}
   template:
     metadata:
