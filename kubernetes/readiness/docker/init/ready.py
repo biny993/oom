@@ -36,6 +36,7 @@ api_instance = client.ExtensionsV1beta1Api(client.ApiClient(configuration))
 api = client.AppsV1beta1Api(client.ApiClient(configuration))
 batchV1Api = client.BatchV1Api(client.ApiClient(configuration))
 
+apiV1 = client.AppsV1Api(client.ApiClient(configuration))
 
 def is_job_complete(job_name):
     complete = False
@@ -58,13 +59,29 @@ def is_job_complete(job_name):
 
 def wait_for_statefulset_complete(statefulset_name):
     try:
-        response = api.read_namespaced_stateful_set(statefulset_name, namespace)
+        response = None
+        try:
+            response = api.read_namespaced_stateful_set(statefulset_name, namespace)
+        except Exception:
+            response = apiV1.read_namespaced_stateful_set(statefulset_name, namespace)
+
+        if not response:
+            log.error("API version is incompatible to either extensions/v1beta1 or apps/v1")
+
         s = response.status
-        if (s.updated_replicas == response.spec.replicas and
+        if (s.updated_replicas and
+                s.updated_replicas == response.spec.replicas and
                 s.replicas == response.spec.replicas and
                 s.ready_replicas == response.spec.replicas and
                 s.current_replicas == response.spec.replicas and
                 s.observed_generation == response.metadata.generation):
+            log.info("Statefulset " + statefulset_name + "  is ready")
+            return True
+        elif (s.updatedReplicas == response.spec.replicas and
+                s.replicas == response.spec.replicas and
+                s.readyReplicas == response.spec.replicas and
+                s.currentReplicas == response.spec.replicas and
+                s.observedGeneration == response.metadata.generation):
             log.info("Statefulset " + statefulset_name + "  is ready")
             return True
         else:
@@ -76,13 +93,26 @@ def wait_for_statefulset_complete(statefulset_name):
 
 def wait_for_deployment_complete(deployment_name):
     try:
-        response = api.read_namespaced_deployment(deployment_name, namespace)
+        response = None
+        try:
+            response = api.read_namespaced_deployment(deployment_name, namespace)
+        except Exception:
+            response = apiV1.read_namespaced_deployment(deployment_name, namespace)
+
         s = response.status
-        if (s.unavailable_replicas is None and
+        if (s.updated_replicas and
+                s.unavailable_replicas is None and
                 s.updated_replicas == response.spec.replicas and
                 s.replicas == response.spec.replicas and
                 s.ready_replicas == response.spec.replicas and
                 s.observed_generation == response.metadata.generation):
+            log.info("Deployment " + deployment_name + "  is ready")
+            return True
+        elif (s.unavailableReplicas is None and
+                s.updatedReplicas == response.spec.replicas and
+                s.replicas == response.spec.replicas and
+                s.readyReplicas == response.spec.replicas and
+                s.observedGeneration == response.metadata.generation):
             log.info("Deployment " + deployment_name + "  is ready")
             return True
         else:
@@ -100,17 +130,19 @@ def is_ready(container_name):
                                                  watch=False)
         for i in response.items:
             # container_statuses can be None, which is non-iterable.
-            if i.status.container_statuses is None:
+            if not i.status.container_statuses and not i.status.containerStatuses:
                 continue
-            for s in i.status.container_statuses:
+            containerstatuses = i.status.container_statuses or i.status.containerStatuses
+            for s in containerstatuses:
                 if s.name == container_name:
                     name = read_name(i)
-                    if i.metadata.owner_references[0].kind == "StatefulSet":
+                    ownerReferences = i.metadata.owner_references or i.metadata.ownerReferences
+                    if ownerReferences[0].kind == "StatefulSet":
                         ready = wait_for_statefulset_complete(name)
-                    elif i.metadata.owner_references[0].kind == "ReplicaSet":
+                    elif ownerReferences[0].kind == "ReplicaSet":
                         deployment_name = get_deployment_name(name)
                         ready = wait_for_deployment_complete(deployment_name)
-                    elif i.metadata.owner_references[0].kind == "Job":
+                    elif ownerReferences[0].kind == "Job":
                         ready = is_job_complete(name)
 
                     return ready
@@ -123,11 +155,17 @@ def is_ready(container_name):
 
 
 def read_name(item):
-    return item.metadata.owner_reference[0].name
+    ownerReferences = item.metadata.owner_references or item.metadata.ownerReferences
+    return ownerReferences[0].name
 
 
 def get_deployment_name(replicaset):
-    api_response = api_instance.read_namespaced_replica_set_status(replicaset,
+    api_response = None
+    try:
+        api_response = api_instance.read_namespaced_replica_set_status(replicaset,
+                                                                   namespace)
+    except Exception:
+        api_response = apiV1.read_namespaced_replica_set_status(replicaset,
                                                                    namespace)
     deployment_name = read_name(api_response)
     return deployment_name
