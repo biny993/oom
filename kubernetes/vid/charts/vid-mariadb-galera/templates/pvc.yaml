@@ -1,5 +1,5 @@
 {{/*
-# Copyright © 2017 Amdocs, Bell Canada
+# Copyright ï¿½ 2017 Amdocs, Bell Canada
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,15 +30,15 @@ metadata:
 {{ toYaml .Values.persistence.annotations | indent 4 }}
 {{- end }}
 spec:
-  selector:
-    matchLabels:
-      name: {{ include "common.fullname" . }}
   accessModes:
     - {{ .Values.persistence.accessMode }}
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
 {{- if .Values.persistence.storageClass }}
+  selector:
+    matchLabels:
+      name: {{ include "common.fullname" . }}
 {{- if (eq "-" .Values.persistence.storageClass) }}
   storageClassName: ""
 {{- else }}

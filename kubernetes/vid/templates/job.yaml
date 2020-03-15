@@ -34,11 +34,10 @@ spec:
         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
         command:
         - /root/ready.py
-{{- $fullname := include "common.fullname" . -}}
-{{- range $i,$t := until (int .Values.vid_mariadb_galera.replicaCount)}}
+        args:
+{{- $fullname := include "common.fullname" . }}
         - --container-name
-        - {{ $fullname }}-mariadb-galera-{{$i}}
-{{- end }}
+        - {{ $fullname }}-mariadb-galera
         env:
         - name: NAMESPACE
           valueFrom:

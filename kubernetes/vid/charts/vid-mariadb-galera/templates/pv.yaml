@@ -1,5 +1,5 @@
 {{/*
-# Copyright © 2017 Amdocs, Bell Canada
+# Copyright ï¿½ 2017 Amdocs, Bell Canada
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 # limitations under the License.
 */}}
 
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) -}}
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingPV) -}}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
