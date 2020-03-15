@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-dmaap-message-router-zookeeper-helper
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  selector:
+    matchLabels:
+      run: dev-dmaap-message-router-zookeeper-helper
+  template:
+    metadata:
+      labels:
+        run: dev-dmaap-message-router-zookeeper-helper
+    spec:
+      containers:
+      - args:
+        - sh
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        name: dev-dmaap-message-router-zookeeper-helper
+        stdin: true
+        tty: true
+        volumeMounts:
+        - name: pvc1
+          mountPath: "/mnt1"
+        - name: pvc2
+          mountPath: "/mnt2"
+        - name: pvc3
+          mountPath: "/mnt3"
+      restartPolicy: Always
+      volumes:
+      - name: pvc1
+        persistentVolumeClaim:
+          claimName: zookeeper-data-dev-dmaap-message-router-zookeeper-0
+      - name: pvc2
+        persistentVolumeClaim:
+          claimName: zookeeper-data-dev-dmaap-message-router-zookeeper-1
+      - name: pvc3
+        persistentVolumeClaim:
+          claimName: zookeeper-data-dev-dmaap-message-router-zookeeper-2
