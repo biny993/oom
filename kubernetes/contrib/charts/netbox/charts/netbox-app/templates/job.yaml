@@ -53,7 +53,7 @@ spec:
         - name: {{ include "common.fullname" . }}-provisioning
           mountPath: /tmp
         command:
-        - /bin/bash
+        - /bin/sh
         - ./tmp/provision.sh
       volumes:
         - name: {{ include "common.fullname" . }}-provisioning
