@@ -14,7 +14,7 @@
 # limitations under the License.
 */}}
 
-{{- if and .Values.global.persistence.enabled (not .Values.persistence.existingClaim) -}}
+{{- if and .Values.global.persistence.enabled (not .Values.persistence.existingPV) -}}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
