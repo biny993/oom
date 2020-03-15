@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-{{ if .Values.persistence.enabled }}
+{{ if and .Values.persistence.enabled (not .Values.persistence.existingPV) }}
 {{- $root := . -}}
 {{ range $i, $e := until (int $root.Values.replicaCount) }}
 ---

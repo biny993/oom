@@ -223,7 +223,10 @@ spec:
         requests:
           # upstream recommended max is 700M
           storage: "{{ .Values.persistence.storage }}"
-      storageClassName: {{ include "common.fullname" . }}-data
+      {{- if .Values.persistence.storageClass }}
+      #storageClassName: {{ include "common.fullname" . }}-data
+      storageClassName: {{ .Values.persistence.storageClass }}
+      {{- end }}
   {{- else }}
       volumes:
       - name: {{ include "common.fullname" . }}-data

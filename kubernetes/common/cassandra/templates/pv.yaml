@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-{{ if .Values.persistence.enabled }}
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingPV) -}}
 {{- $root := . -}}
 {{ range $i, $e := until (int $root.Values.replicaCount) }}
 ---
@@ -35,5 +35,11 @@ spec:
   hostPath:
     path: {{ $root.Values.persistence.mountPath }}/{{ $root.Release.Name }}/{{ $root.Values.persistence.mountSubPath }}-{{ $i }}
   persistentVolumeReclaimPolicy: {{ $root.Values.persistence.volumeReclaimPolicy }}
-{{ end }}
+{{- if $root.Values.persistence.storageClass }}
+{{- if (eq "-" $root.Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ $root.Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}{{ end }}
 {{ end }}

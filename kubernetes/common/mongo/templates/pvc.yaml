@@ -36,8 +36,10 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
+  {{- if .Values.persistence.storageClass }}
   selector:
     matchLabels:
       name: {{ include "common.fullname" . }}
   storageClassName: "{{ include "common.fullname" . }}-data"
+  {{- end }}
 {{- end -}}

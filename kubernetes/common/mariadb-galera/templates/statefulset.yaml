@@ -133,11 +133,13 @@ spec:
     spec:
       accessModes:
       - {{ .Values.persistence.accessMode | quote }}
-      storageClassName: {{ include "common.fullname" . }}-data
       resources:
         requests:
           storage: {{ .Values.persistence.size | quote }}
+{{- if .Values.persistence.storageClass }}
+      storageClassName: {{ include "common.fullname" . }}-data
       selector:
         matchLabels:
           name: {{ include "common.fullname" . }}
+{{ end -}}
 {{- end }}

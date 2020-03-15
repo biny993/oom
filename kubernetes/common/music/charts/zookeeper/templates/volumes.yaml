@@ -21,5 +21,12 @@ spec:
   hostPath:
     path: {{ $root.Values.persistence.mountPath }}/{{ $root.Release.Name }}/{{ $root.Values.persistence.mountSubPath }}-{{$i}}
   persistentVolumeReclaimPolicy: {{ $root.Values.persistence.volumeReclaimPolicy }}
+{{- if $root.Values.persistence.storageClass }}
+{{- if (eq "-" $root.Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ $root.Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
 {{ end }}
 {{ end }}

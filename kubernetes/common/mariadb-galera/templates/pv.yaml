@@ -14,7 +14,7 @@
 # limitations under the License.
 */}}
 {{- $global := . }}
-{{- if and $global.Values.persistence.enabled (not $global.Values.persistence.existingClaim) -}}
+{{- if and $global.Values.persistence.enabled (not $global.Values.persistence.existingPV) -}}
 {{- range $i, $t := until (int $global.Values.replicaCount)}}
 kind: PersistentVolume
 apiVersion: v1

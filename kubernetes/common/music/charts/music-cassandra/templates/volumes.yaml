@@ -48,5 +48,12 @@ spec:
               values:
               - "{{ $root.Chart.Name }}"
         topologyKey: kubernetes.io/hostname
+{{- if $root.Values.persistence.storageClass }}
+{{- if (eq "-" $root.Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ $root.Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
 {{ end }}
 {{ end }}
