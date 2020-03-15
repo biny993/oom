@@ -150,23 +150,27 @@ spec:
         name: {{ include "common.fullname" . }}
     spec:
       accessModes: [ {{ .Values.persistence.accessMode }} ]
-      storageClassName: {{ include "common.fullname" . }}-spool-data-stcl
       resources:
         requests:
           storage: {{ .Values.persistence.spoolSize }}
+      {{- if .Values.persistence.storageClass }}
+      storageClassName: {{ include "common.fullname" . }}-spool-data-stcl
       selector:
         matchLabels:
           name: {{ include "common.fullname" . }}-spool-data-pv
+      {{- end }}
   - metadata:
       name: {{ include "common.fullname" . }}-event-logs-pvc
       labels:
         name: {{ include "common.fullname" . }}
     spec:
       accessModes: [ {{ .Values.persistence.accessMode }} ]
-      storageClassName: {{ include "common.fullname" . }}-event-logs-stcl
       resources:
         requests:
           storage: {{ .Values.persistence.eventLogSize }}
+      {{- if .Values.persistence.storageClass }}
+      storageClassName: {{ include "common.fullname" . }}-event-logs-stcl
       selector:
         matchLabels:
           name: {{ include "common.fullname" . }}-event-logs-pv
+      {{ end -}}

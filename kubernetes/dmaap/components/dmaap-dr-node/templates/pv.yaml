@@ -17,6 +17,7 @@
   # SPDX-License-Identifier: Apache-2.0
   # ============LICENSE_END=========================================================
 */}}
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingPV) -}}
 
 kind: PersistentVolume
 apiVersion: v1
@@ -59,3 +60,4 @@ spec:
   persistentVolumeReclaimPolicy: {{ .Values.persistence.volumeReclaimPolicy }}
   hostPath:
     path: {{ .Values.persistence.mountPath }}/{{ .Release.Name }}/{{ .Values.persistence.eventLogsMountSubPath }}
+{{ end -}}

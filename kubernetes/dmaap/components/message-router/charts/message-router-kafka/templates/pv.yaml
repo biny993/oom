@@ -13,7 +13,7 @@
 # limitations under the License.
 
 {{- $root := . -}}
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) -}}
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingPV) -}}
 {{ range $i, $e := until (atoi (quote $root.Values.replicaCount) | default 3) }}
 ---
 apiVersion: v1
@@ -34,6 +34,13 @@ spec:
   hostPath:
     path: {{ $root.Values.persistence.mountPath }}/{{ $root.Release.Name }}/{{ $root.Values.persistence.mountSubPath }}-{{ $i }}
   persistentVolumeReclaimPolicy: {{ $root.Values.persistence.volumeReclaimPolicy }}
+{{- if $root.Values.persistence.storageClass }}
+{{- if (eq "-" $root.Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ $root.Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
 {{ end }}
 {{ end }}
 
