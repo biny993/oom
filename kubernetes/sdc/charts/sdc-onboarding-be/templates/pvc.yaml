@@ -31,15 +31,15 @@ metadata:
 {{ toYaml .Values.cert.persistence.annotations | indent 4 }}
 {{- end }}
 spec:
-  selector:
-    matchLabels:
-      name: {{ include "common.fullname" . }}
   accessModes:
     - {{ .Values.cert.persistence.accessMode }}
   resources:
     requests:
       storage: {{ .Values.cert.persistence.size }}
 {{- if .Values.cert.persistence.storageClass }}
+  selector:
+    matchLabels:
+      name: {{ include "common.fullname" . }}
 {{- if (eq "-" .Values.cert.persistence.storageClass) }}
   storageClassName: ""
 {{- else }}

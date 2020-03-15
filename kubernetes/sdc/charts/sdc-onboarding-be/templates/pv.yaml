@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 */}}
-{{- if and .Values.persistence.enabled (not .Values.cert.persistence.existingClaim) -}}
+{{- if and .Values.persistence.enabled (not .Values.cert.persistence.existingPV) -}}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -35,4 +35,11 @@ spec:
   persistentVolumeReclaimPolicy: {{ .Values.cert.persistence.volumeReclaimPolicy }}
   hostPath:
     path: {{ .Values.global.persistence.mountPath | default .Values.persistence.mountPath }}/{{ .Release.Name }}/{{ .Values.cert.persistence.mountSubPath }}
+{{- if .Values.persistence.storageClass }}
+{{- if (eq "-" .Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
 {{- end -}}
