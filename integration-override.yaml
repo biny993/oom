@@ -128,17 +128,27 @@ aaf:
     persistence:
       existingPV: true
     aaf-sms-quorumclient:
-        persistence:
-          existingPV: true
+      persistence:
+        existingPV: true
     aaf-sms-vault:
-        persistence:
-          existingPV: true
+      persistence:
+        existingPV: true
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - controller-0
+                - controller-1
   aaf-sshsm:
     persistence:
       existingPV: true
     aaf-sshsm-distcenter:
-        persistence:
-          existingPV: true
+      persistence:
+        existingPV: true
 cassandra:
   enabled: true
   liveness:
@@ -223,6 +233,8 @@ mariadb-galera:
   persistence:
     existingPV: true
     accessMode: ReadWriteMany
+  #nodeSelector:
+    #kubernetes.io/hostname: controller-1
 modeling:
   enabled: false
   mariadb-galera:
@@ -235,12 +247,22 @@ multicloud:
   enabled: true
   image: onap/multicloud/framework:1.5.1
   multicloud-starlingx:
-    image: onap/multicloud/openstack-starlingx:1.5.4
+    image: onap/multicloud/openstack-starlingx:1.5.5
   multicloud-k8s:
     image: onap/multicloud/k8s:0.5.0
     etcd:
       persistence:
         existingPV: true
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - controller-0
+                - controller-1
     mongo:
       persistence:
         existingPV: true
