@@ -68,6 +68,10 @@ spec:
           readOnly: true
         resources:
 {{ include "common.resources" . | indent 10 }}
+      {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 10 }}
+      {{- end }}
       volumes:
         - name: {{ include "common.fullname" . }}-consuldata
           persistentVolumeClaim:
