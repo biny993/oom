@@ -246,7 +246,9 @@ certpersistence:
   # existingClaim:
 
   volumeReclaimPolicy: Retain
-  accessMode: ReadWriteOnce
+  #accessMode: ReadWriteOnce
+  accessMode: ReadWriteMany
+  storageClass: nfs
   size: 50Mi
   mountPath: /dockerdata-nfs
   mountSubPath: sdnc/certs
