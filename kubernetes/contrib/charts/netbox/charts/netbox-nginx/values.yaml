@@ -67,6 +67,7 @@ persistence:
   ##
   # storageClass: "-"
   accessMode: ReadWriteMany
+  storageClass: "nfs"
   size: 1Gi
   mountPath: /dockerdata-nfs
   mountSubPath: netbox/nginx/data

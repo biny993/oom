@@ -85,6 +85,7 @@ persistence:
   enabled: true
   volumeReclaimPolicy: Retain
   accessMode: ReadWriteMany
+  storageClass: "nfs"
   size: 100Mi
 
   # Uncomment the storageClass parameter to use an existing PV

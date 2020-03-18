@@ -77,6 +77,7 @@ persistence:
   # storageClass: "nfs-dev-sc"
 
   accessMode: ReadWriteMany
+  storageClass: "nfs"
   size: 5Gi
 
   # When using storage class, mountPath and mountSubPath are
