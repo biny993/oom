@@ -1,5 +1,5 @@
 {{/*
-# Copyright © 2019 Amdocs, Bell Canada
+# Copyright  2019 Amdocs, Bell Canada
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,9 +30,11 @@ metadata:
 {{ toYaml .Values.persistence.annotations | indent 4 }}
 {{- end }}
 spec:
+  {{- if (not .Values.persistence.existingPV) }}
   selector:
     matchLabels:
       name: {{ include "common.fullname" . }}-backup
+  {{- end}}
   accessModes:
     - {{ .Values.persistence.accessMode }}
   resources:
@@ -61,9 +63,11 @@ metadata:
 {{ toYaml .Values.persistence.annotations | indent 4 }}
 {{- end }}
 spec:
+  {{- if (not .Values.persistence.existingPV) }}
   selector:
     matchLabels:
       name: {{ include "common.fullname" . }}-db-data
+  {{- end}}
   accessModes:
     - {{ .Values.persistence.accessMode }}
   resources:

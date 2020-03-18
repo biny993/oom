@@ -59,8 +59,8 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 5432
-        initialDelaySeconds: 15
-        periodSeconds: 20
+          initialDelaySeconds: 15
+          periodSeconds: 20
         volumeMounts:
         - name: pgpool-pgconf
           mountPath: /pgconf/pgpoolconfigdir

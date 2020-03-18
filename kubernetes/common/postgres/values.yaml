@@ -95,6 +95,8 @@ persistence:
   ## If undefined (the default) or set to null, no storageClassName spec is
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
+  # set to nfs to workaround the mount dir previlege issue
+  storageClass: nfs
   accessMode: ReadWriteOnce
   size: 1Gi
   mountPath: /dockerdata-nfs

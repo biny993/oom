@@ -30,11 +30,18 @@ metadata:
 {{ toYaml .Values.persistence.annotations | indent 4 }}
 {{- end }}
 spec:
-  {{- if .Values.persistence.storageClass }}
+  {{- if (not .Values.persistence.existingPV) }}
   selector:
     matchLabels:
       name: {{ include "common.fullname" . }}
   {{- end}}
+{{- if .Values.persistence.storageClass }}
+{{- if (eq "-" .Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
   accessModes:
     - {{ .Values.persistence.accessMode }}
   resources:

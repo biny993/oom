@@ -164,6 +164,11 @@ spec:
       #annotations:
       #  volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.storageClass }}
       spec:
+      {{- if (not .Values.persistence.existingPV) }}
+        selector:
+          matchLabels:
+            release: "{{ .Release.Name }}"
+      {{- end }}
         accessModes:
           - {{ .Values.persistence.accessMode | quote }}
         resources:
@@ -171,8 +176,5 @@ spec:
             storage: {{ .Values.persistence.size | quote }}
         {{- if .Values.persistence.storageClass }}
         storageClassName: {{ .Values.persistence.storageClass }}
-        selector:
-          matchLabels:
-            release: "{{ .Release.Name }}"
         {{- end }}
   {{- end }}
