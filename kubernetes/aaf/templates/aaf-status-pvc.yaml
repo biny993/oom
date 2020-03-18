@@ -33,15 +33,17 @@ metadata:
 {{ toYaml .Values.persistence.annotations | indent 4 }}
 {{- end }}
 spec:
+{{- if (not .Values.persistence.existingPV) }}
+  selector:
+    matchLabels:
+      app: {{ include "common.name" . }}-status
+{{- end }}
   accessModes:
     - {{ .Values.persistence.status.accessMode }}
   resources:
     requests:
       storage: {{ .Values.persistence.status.size }}
 {{- if .Values.persistence.status.storageClass }}
-  selector:
-    matchLabels:
-      app: {{ include "common.name" . }}-status
 {{- if (eq "-" .Values.persistence.status.storageClass) }}
   storageClassName: ""
 {{- else }}

@@ -130,6 +130,7 @@ persistence:
     accessMode: ReadWriteMany
     size: 2Gi
     #storageClass: "manual"
+    storageClass: "nfs"
     mountPath: "/mnt/data/aaf/config"
   logs:
     #existingClaim:
@@ -137,12 +138,14 @@ persistence:
     accessMode: ReadWriteMany
     size: 2Gi
     #storageClass: "manual"
+    storageClass: "nfs"
     mountPath: "/mnt/data/aaf/logs"
   status:
     volumeReclaimPolicy: Delete
     accessMode: ReadWriteMany
     size: 2M
     #storageClass: "manual"
+    storageClass: "nfs"
     mountPath: /dockerdata-nfs
     mountSubPath: "status"
   cass:
@@ -151,6 +154,7 @@ persistence:
     accessMode: ReadWriteOnce
     size: 10Gi
     #storageClass: "manual"
+    storageClass: "nfs"
     mountPath: /dockerdata-nfs
     mountSubPath: "cass"
 

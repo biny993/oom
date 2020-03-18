@@ -33,9 +33,11 @@ metadata:
 {{ toYaml .Values.persistence.annotations | indent 4 }}
 {{- end }}
 spec:
+{{- if (not .Values.persistence.config.existingPV) }}
   selector:
     matchLabels:
       app: {{ include "common.name" . }}-hello
+{{- end }}
   accessModes:
     - {{ .Values.persistence.config.accessMode }}
   resources:

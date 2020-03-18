@@ -18,7 +18,7 @@
 ##  limitations under the License.
 ##  ============LICENSE_END====================================================
 ##
-
+{{- if (not .Values.persistence.existingPV) }}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -43,6 +43,7 @@ spec:
   storageClassName: ""
 {{- else }}
   storageClassName: "{{ .Values.persistence.config.storageClass }}"
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end -}}

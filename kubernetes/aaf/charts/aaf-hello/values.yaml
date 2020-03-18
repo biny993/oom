@@ -50,7 +50,8 @@ persistence:
     volumeReclaimPolicy: Delete
     accessMode: ReadWriteMany
     size: 40M
-    storageClass: "manual"
+    #storageClass: "manual"
+    storageClass: "nfs"
     mountPath: "/mnt/data/aaf/hello"
 
 nodeSelector: {}
