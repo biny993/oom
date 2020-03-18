@@ -87,6 +87,7 @@ service:
 persistence:
   volumeReclaimPolicy: Retain
   accessMode: ReadWriteMany
+  storageClass: "nfs"
   size: 2Gi
   enabled: true
   mountSubPath: cds/blueprints/deploy
