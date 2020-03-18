@@ -76,6 +76,7 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   accessMode: ReadWriteMany
+  storageClass: "nfs"
   size: 1Gi
   mountPath: /dockerdata-nfs
   mountSubPath: log/elasticsearch/data
