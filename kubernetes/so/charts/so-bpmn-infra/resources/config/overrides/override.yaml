@@ -90,7 +90,7 @@ mso:
     vnf:
       endpoint: http://so-openstack-adapter.{{ include "common.namespace" . }}:8087/services/VnfAdapter
       rest:
-        endpoint: http://so-openstack-adapter.{{ include "common.namespace" . }}:8087/services/rest/v1/vnfs
+        endpoint: http://so-openstack-adapter.{{ include "common.namespace" . }}:8087/services/rest/v2/vnfs
     volume-groups:
       rest:
         endpoint: http://so-openstack-adapter.{{ include "common.namespace" . }}:8087/services/rest/v1/volume-groups
