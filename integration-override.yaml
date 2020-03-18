@@ -67,6 +67,8 @@ sdnc:
     enableClustering: true
   persistence:
     existingPV: true
+  certpersistence:
+    existingPV: true
   mariadb-galera:
     liveness:
       initialDelaySeconds: 180
@@ -186,8 +188,10 @@ dmaap:
     postgres:
       persistence:
         existingPV: true
-        accessMode: ReadWriteMany
-  #message-router:
+        #accessMode: ReadWriteMany
+  dmaap-dr-node:
+    persistence:
+      existingPV: true
   dmaap-dr-prov:
     mariadb:
       liveness:
@@ -195,16 +199,16 @@ dmaap:
         periodSeconds: 60
       persistence:
         existingPV: true
-        accessMode: ReadWriteMany
+        #accessMode: ReadWriteMany
   message-router:
       message-router-kafka:
         persistence:
           existingPV: true
-          accessMode: ReadWriteMany
+          #accessMode: ReadWriteMany
       message-router-zookeeper:
         persistence:
           existingPV: true
-          accessMode: ReadWriteMany
+          #accessMode: ReadWriteMany
 esr:
   enabled: false
 log:
@@ -232,7 +236,7 @@ mariadb-galera:
     periodSeconds: 60
   persistence:
     existingPV: true
-    accessMode: ReadWriteMany
+    #accessMode: ReadWriteMany
   #nodeSelector:
     #kubernetes.io/hostname: controller-1
 modeling:
