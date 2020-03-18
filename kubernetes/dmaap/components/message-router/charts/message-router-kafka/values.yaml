@@ -99,6 +99,8 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   # storageClass: "-"
+  # set to nfs to workaround the issue: rbd-provisioner provisions default dir 'lost+found'
+  storageClass: nfs
   accessMode: ReadWriteOnce
   size: 2Gi
   mountPath: /dockerdata-nfs

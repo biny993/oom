@@ -149,28 +149,42 @@ spec:
       labels:
         name: {{ include "common.fullname" . }}
     spec:
+      {{- if (not .Values.persistence.existingPV) }}
+      selector:
+        matchLabels:
+          name: {{ include "common.fullname" . }}-spool-data-pv
+      {{- end }}
       accessModes: [ {{ .Values.persistence.accessMode }} ]
       resources:
         requests:
           storage: {{ .Values.persistence.spoolSize }}
       {{- if .Values.persistence.storageClass }}
-      storageClassName: {{ include "common.fullname" . }}-spool-data-stcl
-      selector:
-        matchLabels:
-          name: {{ include "common.fullname" . }}-spool-data-pv
+    {{- if (eq "-" .Values.persistence.storageClass) }}
+      storageClassName: ""
+    {{- else }}
+      storageClassName: "{{ .Values.persistence.storageClass }}"
+    {{- end }}
       {{- end }}
   - metadata:
       name: {{ include "common.fullname" . }}-event-logs-pvc
       labels:
         name: {{ include "common.fullname" . }}
     spec:
+      {{- if (not .Values.persistence.existingPV) }}
+      selector:
+        matchLabels:
+          name: {{ include "common.fullname" . }}-event-logs-pv
+      {{- end }}
       accessModes: [ {{ .Values.persistence.accessMode }} ]
       resources:
         requests:
           storage: {{ .Values.persistence.eventLogSize }}
       {{- if .Values.persistence.storageClass }}
-      storageClassName: {{ include "common.fullname" . }}-event-logs-stcl
-      selector:
-        matchLabels:
-          name: {{ include "common.fullname" . }}-event-logs-pv
+    {{- if .Values.persistence.storageClass }}
+    {{- if (eq "-" .Values.persistence.storageClass) }}
+      storageClassName: ""
+    {{- else }}
+      storageClassName: "{{ .Values.persistence.storageClass }}"
+    {{- end }}
+    {{- end }}
       {{ end -}}
