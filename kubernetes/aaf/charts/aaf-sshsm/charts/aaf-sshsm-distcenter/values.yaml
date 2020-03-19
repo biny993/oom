@@ -41,7 +41,9 @@ affinity: {}
 persistence:
   enabled: true
   volumeReclaimPolicy: Retain
-  accessMode: ReadWriteOnce
+  #accessMode: ReadWriteOnce
+  accessMode: ReadWriteMany
+  storageClass: nfs
   size: 10Mi
   mountPath: /dockerdata-nfs
   mountSubPath: sshsm/distcenter/data
