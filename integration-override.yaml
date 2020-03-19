@@ -189,6 +189,15 @@ dmaap:
       persistence:
         existingPV: true
         #accessMode: ReadWriteMany
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - controller-0
   dmaap-dr-node:
     persistence:
       existingPV: true
