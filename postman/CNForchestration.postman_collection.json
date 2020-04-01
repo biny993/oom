@@ -1,0 +1,1681 @@
+{
+	"info": {
+		"_postman_id": "d31aa9d8-2531-4182-bae7-5fca6ff74501",
+		"name": "CNForchestration",
+		"description": "curl commands for CNF orchestration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Example Cloud-Regions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/examples/cloud-region",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"examples",
+						"cloud-region"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Complexes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/cloud-infrastructure/complexes",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"cloud-infrastructure",
+						"complexes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Complex",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/cloud-infrastructure/complexes/complex/{{CLOUD_COMPLEX}}?depth=all",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"cloud-infrastructure",
+						"complexes",
+						"complex",
+						"{{CLOUD_COMPLEX}}"
+					],
+					"query": [
+						{
+							"key": "depth",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Complex",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"physical-location-id\": \"{{CLOUD_COMPLEX}}\",\r\n    \"data-center-code\": \"example-data-center-code-val-5556\",\r\n    \"complex-name\": \"{{CLOUD_COMPLEX}}\",\r\n    \"identity-url\": \"example-identity-url-val-56898\",\r\n    \"physical-location-type\": \"example-physical-location-type-val-7608\",\r\n    \"street1\": \"example-street1-val-34205\",\r\n    \"street2\": \"example-street2-val-99210\",\r\n    \"city\": \"Beijing\",\r\n    \"state\": \"example-state-val-59487\",\r\n    \"postal-code\": \"100000\",\r\n    \"country\": \"example-country-val-94173\",\r\n    \"region\": \"example-region-val-13893\",\r\n    \"latitude\": \"39.9042\",\r\n    \"longitude\": \"106.4074\",\r\n    \"elevation\": \"example-elevation-val-30253\",\r\n    \"lata\": \"example-lata-val-46073\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/cloud-infrastructure/complexes/complex/{{CLOUD_COMPLEX}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"cloud-infrastructure",
+						"complexes",
+						"complex",
+						"{{CLOUD_COMPLEX}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cloud-Regions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "705695aa-21b8-4b3f-9e00-4f46178f37d0",
+						"exec": [
+							"var region_found = false;",
+							"if (pm.response.code === 404) {",
+							"    tests[pm.environment.get(\"onap_cloud_region_id\")+\" does not exists in AAI\"] = true;",
+							"}",
+							"else {",
+							"    if (pm.response.code === 200) {",
+							"        tests[\"Status code is 200\"] = pm.response.code === 200;",
+							"        }",
+							"var jsonData = pm.response.json();",
+							"for (var i = 0; i < jsonData[\"cloud-region\"].length; i++) { ",
+							"   if ((jsonData[\"cloud-region\"][i][\"cloud-region-id\"] === pm.environment.get(\"onap_cloud_region_id\")) && (jsonData[\"cloud-region\"][i][\"cloud-owner\"] === pm.environment.get(\"cloud_owner_name\"))) {",
+							"       region_found = true;",
+							"   }",
+							"}",
+							"",
+							"if (region_found === false) {",
+							"    tests[pm.environment.get(\"onap_cloud_region_id\")+\" does not exist yet for cloudOwner \"+pm.environment.get(\"cloud_owner_name\")] = true;",
+							"}",
+							"else {",
+							"    tests[pm.environment.get(\"onap_cloud_region_id\")+\" already exists, we skip creation\"] = true;",
+							"    postman.setNextRequest(\"check tenant in cloud region\");",
+							"}",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "AAI"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-TransactionId",
+						"value": "808b54e3-e563-4144-a1b9-e24e2ed93d4f"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/cloud-infrastructure/cloud-regions",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"cloud-infrastructure",
+						"cloud-regions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Cloud-Region",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/cloud-infrastructure/cloud-regions/cloud-region/{{CLOUD_OWNER}}/{{CLOUD_REGIONID}}?depth=all",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"cloud-infrastructure",
+						"cloud-regions",
+						"cloud-region",
+						"{{CLOUD_OWNER}}",
+						"{{CLOUD_REGIONID}}"
+					],
+					"query": [
+						{
+							"key": "depth",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Cloud-Region",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cloud-owner\": \"{{CLOUD_OWNER}}\",\r\n    \"cloud-region-id\": \"{{CLOUD_REGIONID}}\",\r\n    \"cloud-type\": \"{{CLOUD_TYPE}}\",\r\n    \"owner-defined-type\": \"t1\",\r\n    \"cloud-region-version\": \"{{CLOUD_VERSION}}\",\r\n    \"identity-url\": \"\",\r\n    \"cloud-zone\": \"CloudZone\",\r\n    \"complex-name\": \"{{CLOUD_COMPLEX}}\",\r\n    \"sriov-automation\": \"false\",\r\n    \"cloud-extra-info\": \"{\\\"openstack-region-id\\\":\\\"{{OS_REGION_ID}}\\\",\\\"k8s-apiserver\\\":\\\"{{K8S_APISERVER}}\\\",\\\"k8s-apitoken\\\":\\\"{{K8S_APITOKEN}}\\\",\\\"isystem\\\": {\\\"software_version\\\": \\\"{{SOFTWARE_VERSION}}\\\"}}\",\r\n    \"relationship-list\": {\r\n        \"relationship\": [\r\n            {\r\n                \"related-to\": \"complex\",\r\n                \"relationship-label\": \"org.onap.relationships.inventory.LocatedIn\",\r\n                \"related-link\": \"/aai/v16/cloud-infrastructure/complexes/complex/{{CLOUD_COMPLEX}}\",\r\n                \"relationship-data\": [\r\n                    {\r\n                        \"relationship-key\": \"complex.physical-location-id\",\r\n                        \"relationship-value\": \"{{CLOUD_COMPLEX}}\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    },\r\n    \"esr-system-info-list\": {\r\n        \"esr-system-info\": [\r\n            {\r\n                \"esr-system-info-id\": \"{{$guid}}\",\r\n                \"service-url\": \"{{OS_AUTH_URL}}\",\r\n                \"user-name\": \"{{OS_USERNAME}}\",\r\n                \"password\": \"{{OS_PASSWORD}}\",\r\n                \"system-type\": \"VIM\",\r\n                \"ssl-insecure\": true,\r\n                \"cloud-domain\": \"{{OS_USER_DOMAIN_NAME}}\",\r\n                \"default-tenant\": \"{{OS_PROJECT_NAME}}\"\r\n            }\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/cloud-infrastructure/cloud-regions/cloud-region/{{CLOUD_OWNER}}/{{CLOUD_REGIONID}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"cloud-infrastructure",
+						"cloud-regions",
+						"cloud-region",
+						"{{CLOUD_OWNER}}",
+						"{{CLOUD_REGIONID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register To Multicloud",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{MSB_SERVICE_PORT}}/api/multicloud/v1/{{CLOUD_OWNER}}/{{CLOUD_REGIONID}}/registry",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{MSB_SERVICE_PORT}}",
+					"path": [
+						"api",
+						"multicloud",
+						"v1",
+						"{{CLOUD_OWNER}}",
+						"{{CLOUD_REGIONID}}",
+						"registry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query MultiCloud Registry status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{MSB_SERVICE_PORT}}/api/multicloud-{{CLOUD_VERSION}}/v1/{{CLOUD_OWNER}}/{{CLOUD_REGIONID}}/registry",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{MSB_SERVICE_PORT}}",
+					"path": [
+						"api",
+						"multicloud-{{CLOUD_VERSION}}",
+						"v1",
+						"{{CLOUD_OWNER}}",
+						"{{CLOUD_REGIONID}}",
+						"registry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete MultiCloud Registry",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{MSB_SERVICE_PORT}}/api/multicloud-{{CLOUD_VERSION}}/v1/{{CLOUD_OWNER}}/{{CLOUD_REGIONID}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{MSB_SERVICE_PORT}}",
+					"path": [
+						"api",
+						"multicloud-{{CLOUD_VERSION}}",
+						"v1",
+						"{{CLOUD_OWNER}}",
+						"{{CLOUD_REGIONID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a k8s connectivity-info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{MSB_SERVICE_PORT}}/api/multicloud-k8s/v1/v1/connectivity-info/{{CLOUD_REGIONID}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{MSB_SERVICE_PORT}}",
+					"path": [
+						"api",
+						"multicloud-k8s",
+						"v1",
+						"v1",
+						"connectivity-info",
+						"{{CLOUD_REGIONID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get k8s definitions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{MSB_SERVICE_PORT}}/api/multicloud-k8s/v1/v1/rb/definition",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{MSB_SERVICE_PORT}}",
+					"path": [
+						"api",
+						"multicloud-k8s",
+						"v1",
+						"v1",
+						"rb",
+						"definition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a k8s profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{MSB_SERVICE_PORT}}/api/multicloud-k8s/v1/v1/rb/definition/${{rbname}}/${{rbprofilename}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{MSB_SERVICE_PORT}}",
+					"path": [
+						"api",
+						"multicloud-k8s",
+						"v1",
+						"v1",
+						"rb",
+						"definition",
+						"${{rbname}}",
+						"${{rbprofilename}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/customers",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Customer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/customers/customer/{{global-customer-id}}?depth=all",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"customers",
+						"customer",
+						"{{global-customer-id}}"
+					],
+					"query": [
+						{
+							"key": "depth",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Customer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"global-customer-id\": \"{{global-customer-id}}\",\n    \"subscriber-name\": \"{{global-customer-id}}\",\n    \"subscriber-type\": \"INFRA\"\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/customers/customer/{{global-customer-id}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"customers",
+						"customer",
+						"{{global-customer-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get service types",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/service-design-and-creation/services",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"service-design-and-creation",
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a service type",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/service-design-and-creation/services/service/{{global-service-type}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"service-design-and-creation",
+						"services",
+						"service",
+						"{{global-service-type}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create service type",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\"service-id\": \"{{global-service-type}}\",\n\"service-description\": \"{{global-service-type}}\"\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/service-design-and-creation/services/service/{{global-service-type}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"service-design-and-creation",
+						"services",
+						"service",
+						"{{global-service-type}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Subscriptions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/customers/customer/{{global-customer-id}}/service-subscriptions",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"customers",
+						"customer",
+						"{{global-customer-id}}",
+						"service-subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Customer subscription",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/customers/customer/{{global-customer-id}}/service-subscriptions/service-subscription/{{global-service-type}}?depth=all",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"customers",
+						"customer",
+						"{{global-customer-id}}",
+						"service-subscriptions",
+						"service-subscription",
+						"{{global-service-type}}"
+					],
+					"query": [
+						{
+							"key": "depth",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put a Customer subscription",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"service-type\": \"{{global-service-type}}\"\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/customers/customer/{{global-customer-id}}/service-subscriptions/service-subscription/{{global-service-type}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"customers",
+						"customer",
+						"{{global-customer-id}}",
+						"service-subscriptions",
+						"service-subscription",
+						"{{global-service-type}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put a Customer subscription relationship",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-TransactionId",
+						"value": "9999"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "jimmy-postman"
+					},
+					{
+						"key": "Real-Time",
+						"value": "true"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"related-to\": \"tenant\",\r\n    \"related-link\": \"/aai/v16/cloud-infrastructure/cloud-regions/cloud-region/{{CLOUD_OWNER}}/{{CLOUD_REGIONID}}/tenants/tenant/{{OS_PROJECT_ID}}\",\r\n    \"relationship-data\": [\r\n        {\r\n            \"relationship-key\": \"cloud-region.cloud-owner\",\r\n            \"relationship-value\": \"{{CLOUD_OWNER}}\"\r\n        },\r\n        {\r\n            \"relationship-key\": \"cloud-region.cloud-region-id\",\r\n            \"relationship-value\": \"{{CLOUD_REGIONID}}\"\r\n        },\r\n        {\r\n            \"relationship-key\": \"tenant.tenant-id\",\r\n            \"relationship-value\": \"{{OS_PROJECT_ID}}\"\r\n        }\r\n    ],\r\n    \"related-to-property\": [\r\n        {\r\n            \"property-key\": \"tenant.tenant-name\",\r\n            \"property-value\": \"{{OS_PROJECT_NAME}}\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/customers/customer/{{global-customer-id}}/service-subscriptions/service-subscription/{{global-service-type}}/relationship-list/relationship",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"customers",
+						"customer",
+						"{{global-customer-id}}",
+						"service-subscriptions",
+						"service-subscription",
+						"{{global-service-type}}",
+						"relationship-list",
+						"relationship"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "preload for VFmodule",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62a8ef7f-7fde-423c-8b70-5f74bb6bc00b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-TransactionId",
+						"value": "0a3f6713-ba96-4971-a6f8-c2da85a3176e"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "API client"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46S3A4Yko0U1hzek0wV1hsaGFrM2VIbGNzZTJnQXc4NHZhb0dHbUp2VXkyVQ=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"input\": {\n        \"request-information\": {\n            \"notification-url\": \"onap.org\",\n            \"order-number\": \"1\",\n            \"order-version\": \"1\",\n            \"request-action\": \"PreloadVNFRequest\",\n            \"request-id\": \"test\"\n        },\n        \"sdnc-request-header\": {\n            \"svc-action\": \"reserve\",\n            \"svc-notification-url\": \"http:\\/\\/onap.org:8080\\/adapters\\/rest\\/SDNCNotify\",\n            \"svc-request-id\": \"test\"\n        },\n        \"vnf-topology-information\": {\n            \"vnf-assignments\": {\n                \"availability-zones\": [],\n                \"vnf-networks\": [],\n                \"vnf-vms\": []\n            },\n            \"vnf-parameters\": [],\n            \"vnf-topology-identifier\": {\n                \"generic-vnf-name\": \"{{gvnf_instance_name}}\",\n                \"generic-vnf-type\": \"{{gvnf_model_name}}\",\n                \"service-type\": \"{{service_instance_uuid}}\",\n                \"vnf-name\": \"{{vfmodule_instance_name}}\",\n                \"vnf-type\": \"{{vfmodule_model_name}}\"\n            }\n        }\n    }\n}\n\n"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{SDNC_SERVICE_PORT}}/restconf/operations/VNF-API:preload-vnf-topology-operation",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{SDNC_SERVICE_PORT}}",
+					"path": [
+						"restconf",
+						"operations",
+						"VNF-API:preload-vnf-topology-operation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get owning-entities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "294b8cb1-67a3-435d-817f-7fd5497183db",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"var oe_found = false;",
+							"for (var i = 0; i < jsonData[\"owning-entity\"].length; i++) { ",
+							"   if (jsonData[\"owning-entity\"][i][\"owning-entity-name\"] === pm.environment.get(\"owning_entity\")) {",
+							"       oe_found = true;",
+							"       pm.environment.set(\"auto_owning_entity_id\", \"\"+jsonData[\"owning-entity\"][i][\"owning-entity-id\"]+\"\");",
+							"   }",
+							"}",
+							"tests[\"Owning-Entity \"+pm.environment.get(\"owning_entity\")+\" found and id saved\"] = oe_found === true;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "AAI"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-TransactionId",
+						"value": "get_aai_subscr"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/owning-entities",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"owning-entities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "declare Owning-Entity in AAI",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic QUFJOkFBSQ=="
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "AAI"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-TransactionId",
+						"value": "get_aai_subscr"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"owning-entity-name\": \"{{owning_entity_name}}\",\n    \"owning-entity-id\": \"{{owning_entity_id}}\"\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{AAI_SERVICE_PORT}}/aai/v16/business/owning-entities/owning-entity/{{owning_entity_id}}",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{AAI_SERVICE_PORT}}",
+					"path": [
+						"aai",
+						"v16",
+						"business",
+						"owning-entities",
+						"owning-entity",
+						"{{owning_entity_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Declare platform",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d0d2a8b-b756-4386-9113-d39722218bf5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"options\": [\"{{platform}}\"]\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{VID_SERVICE_PORT}}/vid/maintenance/category_parameter/platform",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{VID_SERVICE_PORT}}",
+					"path": [
+						"vid",
+						"maintenance",
+						"category_parameter",
+						"platform"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Declare lineOfBusiness",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e177b994-db59-4b13-b003-b6fc0dda6907",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"options\": [\"{{lineofbusiness}}\"]\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{VID_SERVICE_PORT}}/vid/maintenance/category_parameter/lineOfBusiness",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{VID_SERVICE_PORT}}",
+					"path": [
+						"vid",
+						"maintenance",
+						"category_parameter",
+						"lineOfBusiness"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Declare project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5eb2421-a949-44f9-a8f7-786b672aede3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"options\": [\"{{project}}\"]\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{VID_SERVICE_PORT}}/vid/maintenance/category_parameter/project",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{VID_SERVICE_PORT}}",
+					"path": [
+						"vid",
+						"maintenance",
+						"category_parameter",
+						"project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vendor model",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2249b072-2689-45f3-87ea-a75da5802752",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"var vendor_found = false;",
+							"for (var i = 0; i < jsonData.results.length; i++) { ",
+							"   if (jsonData.results[i].name === pm.environment.get(\"vendor_name\")) {",
+							"       vendor_found = true;",
+							"       pm.environment.set(\"auto_vendor_id\", \"\"+jsonData.results[i].id+\"\");",
+							"   }",
+							"}",
+							"if (vendor_found === false) {",
+							"    tests[pm.environment.get(\"vendor_name\")+\" not yet declared\"] = true;",
+							"}",
+							"",
+							"else {",
+							"    tests[pm.environment.get(\"vendor_name\")+\" already exists, we stop the run\"] = false;",
+							"    postman.setNextRequest(null);",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-TransactionId",
+						"value": "robot-ete-ba84612d-c1c6-4c53-9967-7b1dff276c7a"
+					},
+					{
+						"key": "USER_ID",
+						"value": "cs0008"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "robot-ete"
+					}
+				],
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{SDC2_SERVICE_PORT}}/sdc1/feProxy/onboarding-api/v1.0/vendor-license-models",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{SDC2_SERVICE_PORT}}",
+					"path": [
+						"sdc1",
+						"feProxy",
+						"onboarding-api",
+						"v1.0",
+						"vendor-license-models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vendor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "80c1d190-d480-4150-ae91-8ce4111c0f9d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"auto_vendor_id\", \"\"+jsonData.itemId+\"\");",
+							"pm.environment.set(\"auto_vendor_version_id\", \"\"+jsonData.version.id+\"\");",
+							"",
+							"tests[\"Vendor status is : \"+jsonData.version.status] = jsonData.version.status === \"Draft\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-TransactionId",
+						"value": "robot-ete-ba84612d-c1c6-4c53-9967-7b1dff276c7a"
+					},
+					{
+						"key": "USER_ID",
+						"value": "cs0008"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "robot-ete"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"iconRef\": \"icon\",\r\n  \"vendorName\": \"{{vendor_name}}\",\r\n  \"description\": \"Vendor\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{SDC2_SERVICE_PORT}}/sdc1/feProxy/onboarding-api/v1.0/vendor-license-models",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{SDC2_SERVICE_PORT}}",
+					"path": [
+						"sdc1",
+						"feProxy",
+						"onboarding-api",
+						"v1.0",
+						"vendor-license-models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Vendor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db905800-2754-491a-9d78-1ffebc12fb18",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-TransactionId",
+						"value": "robot-ete-ba84612d-c1c6-4c53-9967-7b1dff276c7a"
+					},
+					{
+						"key": "USER_ID",
+						"value": "cs0008"
+					},
+					{
+						"key": "X-FromAppId",
+						"value": "robot-ete"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"action\":\"Submit\"}"
+				},
+				"url": {
+					"raw": "https://{{ONAP_SERVICE_IP}}:{{SDC2_SERVICE_PORT}}/sdc1/feProxy/onboarding-api/v1.0/vendor-license-models/{{auto_vendor_id}}/versions/{{auto_vendor_version_id}}/actions",
+					"protocol": "https",
+					"host": [
+						"{{ONAP_SERVICE_IP}}"
+					],
+					"port": "{{SDC2_SERVICE_PORT}}",
+					"path": [
+						"sdc1",
+						"feProxy",
+						"onboarding-api",
+						"v1.0",
+						"vendor-license-models",
+						"{{auto_vendor_id}}",
+						"versions",
+						"{{auto_vendor_version_id}}",
+						"actions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
