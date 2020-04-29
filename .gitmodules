@@ -1,11 +1,11 @@
 [submodule "kubernetes/aai"]
 	path = kubernetes/aai
 	url = ../aai-oom
-        branch = 5.0.2-ONAP
+        branch = elalto-starlingx3
         ignore = dirty
 [submodule "kubernetes/robot"]
 	path = kubernetes/robot
 	url = ../testsuite-oom
-        branch = 5.0.1-ONAP
+        branch = elalto-starlingx3
         ignore = dirty
         
